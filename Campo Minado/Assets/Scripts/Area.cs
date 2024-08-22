@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class Area : MonoBehaviour
 {
-    bool bomba;
+    [SerializeField] bool bomba;
     bool revelado;
+
     int indexI, indexJ;
 
-    [SerializeField] Sprite[] spritesVazios;
 
-    public bool Bomba { get => bomba; }
+
+    [SerializeField] Sprite[] spritesVazios;
+    [SerializeField] Sprite bombaSprite;
+
+    public bool Bomba { get => bomba; set => bomba = value; }
 
     public void DefinirIndex(int i, int j)
     {
@@ -18,20 +22,26 @@ public class Area : MonoBehaviour
         indexJ = j;
     }
 
-    public void Clicado()
+    public void Revelar()
     {
         Debug.Log("Clicado");
         if (!revelado)
         {
             if (bomba)
             {
-                //GameOver
+                GameManager.instance.GameOver();
             }
             else
             {
-                
+                revelado = true;
                 GetComponent<SpriteRenderer>().sprite = spritesVazios[GameManager.instance.ChecarEntorno(indexI, indexJ)];
             }
         }
+    }
+
+    public void RevelarBomba()
+    {
+        revelado = true;
+        GetComponent<SpriteRenderer>().sprite = bombaSprite;
     }
 }
