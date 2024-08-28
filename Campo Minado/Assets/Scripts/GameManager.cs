@@ -16,15 +16,25 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject AreaPrefab;
 
-    const int diametroDoCampo = 5;
-    const int numeroDeBombas = 10;
+     int diametroDoCampo ;
+     int numeroDeBombas ;
 
     private void Start()
     {
         GerarCampoMinado();
     }
 
-    void GerarCampoMinado()
+    public void DefinirDiametro(string value)
+    {
+        diametroDoCampo = int.Parse(value);
+    }
+
+    public void DefinirBombas(string value)
+    {
+        numeroDeBombas = int.Parse(value);
+    }
+
+   public void GerarCampoMinado()
     {
         areas = new Area[diametroDoCampo, diametroDoCampo];
 
