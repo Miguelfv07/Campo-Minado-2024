@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
+<<<<<<< Updated upstream
         return quantidadeDeBombas;
     }
 
@@ -107,5 +108,9 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+=======
+        if()
+        return quantBombas;
+>>>>>>> Stashed changes
     }
 }
