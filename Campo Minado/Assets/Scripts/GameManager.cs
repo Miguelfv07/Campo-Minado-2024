@@ -19,10 +19,7 @@ public class GameManager : MonoBehaviour
      int diametroDoCampo ;
      int numeroDeBombas ;
 
-    private void Start()
-    {
-        GerarCampoMinado();
-    }
+
 
     public void DefinirDiametro(string value)
     {
@@ -47,7 +44,11 @@ public class GameManager : MonoBehaviour
                 areas[i, j] = area;
             }
         }
+        //Organizar a camera para ficar no meio do diametro
+        Camera.main.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
 
+        //Organizar a camera na altura do campo (matriz)
+        Camera.main.orthographicSize = diametroDoCampo / 2f;
         DistribuirBombas();
     }
 
