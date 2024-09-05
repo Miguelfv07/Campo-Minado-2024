@@ -20,11 +20,14 @@ public class GameManager : MonoBehaviour
      int numeroDeBombas ;
 
     ManagerUI managerUI;
+    GameObject menu, gameOver;
 
 
     private void Start()
     {
          managerUI = GetComponent<ManagerUI>();
+        menu = GameObject.Find("Menu");
+        gameOver = GameObject.Find("GameOver");
     }
 
     public void DefinirDiametro(string value)
@@ -37,6 +40,27 @@ public class GameManager : MonoBehaviour
     {
         numeroDeBombas = int.Parse(value);
         managerUI.AtualizarBarra((float)numeroDeBombas / (diametroDoCampo * diametroDoCampo));
+    }
+
+    public void IniciarJogo()
+    {
+        ExcluirCampo();
+        GerarCampoMinado();
+        DistribuirBombas();
+        menu.SetActive(false);
+        gameOver.SetActive(false);
+    }
+
+    public void ExcluirCampo()
+    {
+        if (areas != null)
+        {
+            foreach (Area area in areas)
+            {
+                Destroy(area.gameObject);
+            }
+        }
+
     }
 
    public void GerarCampoMinado()
@@ -60,8 +84,7 @@ public class GameManager : MonoBehaviour
 
             //Organizar a camera na altura do campo (matriz)
             Camera.main.orthographicSize = diametroDoCampo / 2f;
-            DistribuirBombas();
-            GameObject.Find("Menu").SetActive(false);
+           
         }
     }
 
@@ -121,6 +144,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+
         foreach(Area area in areas)
         {
             if (area.Bomba)
@@ -129,6 +153,8 @@ public class GameManager : MonoBehaviour
             }
 
         }
+
+        gameOver.SetActive(true);
 
     }
 }
