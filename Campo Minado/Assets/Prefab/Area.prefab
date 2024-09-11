@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bomba: 0
+  bandeiraSprite: {fileID: 21300000, guid: 6f2a7b9bcd1a6f7479346e7112962390, type: 3}
   spritesVazios:
   - {fileID: 21300000, guid: e1e185813077683468e6fa9f74ecdb46, type: 3}
   - {fileID: 21300000, guid: 361d87578b9ba404a89c18105c64d080, type: 3}

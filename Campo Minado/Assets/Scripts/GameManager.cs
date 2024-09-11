@@ -19,8 +19,23 @@ public class GameManager : MonoBehaviour
      int diametroDoCampo ;
      int numeroDeBombas ;
 
+    public bool modoBandeira;
+
     ManagerUI managerUI;
     GameObject menu, gameOver;
+
+   public void AlterarBandeira()
+    {
+        // modoBandeira = !modoBandeira;
+        if(modoBandeira)
+        {
+            modoBandeira = false;
+        }
+        else
+        {
+            modoBandeira = true;
+        }
+    }
 
 
     private void Start()
