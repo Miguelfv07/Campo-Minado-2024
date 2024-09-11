@@ -170,6 +170,28 @@ public class GameManager : MonoBehaviour
         }
 
         gameOver.SetActive(true);
+        managerUI.Atualizartexto(false);
 
+    }
+
+    public void Vitoria()
+    {
+        int quantNaoRevelados = 0;
+        foreach (Area area in areas)
+        {
+            if (!area.revelado)
+            {
+                quantNaoRevelados++;
+            }
+
+        }           
+
+            if(quantNaoRevelados == numeroDeBombas)
+            {
+                gameOver.SetActive(true);
+                managerUI.Atualizartexto(true);
+            }
+        
+    
     }
 }
